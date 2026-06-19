@@ -7,6 +7,7 @@ A modern, robust, and highly parallelized test automation framework built with *
 ## 🚀 Key Features
 
 * **Page Object Model (POM)**: Implemented with fluent interface design (chainable page transitions) to keep tests readable, maintainable, and type-safe.
+* **Preconditions**: Added a `Preconditions` class under `utils` to perform common test setups (like registering and logging in a user) in a single step.
 * **Thread-Safe Parallel Execution**: Supports method-level parallel execution (`thread-count="3"`) utilizing Java `ThreadLocal` variables for `WebDriver` and action helpers.
 * **Smart Soft Assertions**: Automatically executes and asserts all soft assertions (`assertAll()`) after each test method completes via TestNG listeners, removing boilerplate code.
 * **Automatic Failure Screenshots**: Automatically captures a screenshot on any test failure and attaches it directly to the Allure report and local storage.

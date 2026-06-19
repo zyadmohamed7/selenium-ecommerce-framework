@@ -4,6 +4,7 @@ import com.seleniumframework.BaseTest;
 import com.seleniumframework.pages.*;
 import com.seleniumframework.utils.actions.AlertsActions;
 import com.seleniumframework.utils.dataReaders.JsonReader;
+import com.seleniumframework.utils.Preconditions;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import io.qameta.allure.*;
@@ -55,44 +56,12 @@ public class E2ETests extends BaseTest {
         String uniqueEmail = "jane.doe." + System.currentTimeMillis() + "@autoexample.com";
         String name = (String) testData.get("name");
 
-        HomePage homePage = new HomePage(getDriver());
-        SignupLoginPage signupLoginPage = homePage.clickSignupLogin();
-
-        RegisterPage registerPage = signupLoginPage.signup(name, uniqueEmail);
-
-        registerPage.selectGender((String) testData.get("title"));
-        registerPage.fillAccountInformation(
-                (String) testData.get("password"),
-                (String) testData.get("day"),
-                (String) testData.get("month"),
-                (String) testData.get("year"),
-                (Boolean) testData.get("newsletter"),
-                (Boolean) testData.get("optin")
-        );
-
-        registerPage.fillAddressInformation(
-                (String) testData.get("firstName"),
-                (String) testData.get("lastName"),
-                (String) testData.get("company"),
-                (String) testData.get("address1"),
-                (String) testData.get("address2"),
-                (String) testData.get("country"),
-                (String) testData.get("state"),
-                (String) testData.get("city"),
-                (String) testData.get("zip"),
-                (String) testData.get("mobile")
-        );
-
-        AccountCreatedPage accountCreatedPage = registerPage.clickCreateAccount();
-
-        getVerifications().assertEquals(accountCreatedPage.getCreatedHeadingText(), "ACCOUNT CREATED!", "Verify account creation success banner text");
-
-        homePage = accountCreatedPage.clickContinue();
+        // Use the Preconditions fixture to register and log in the user
+        HomePage homePage = new Preconditions(getDriver()).createNewUserPrecondition(name, uniqueEmail, testData);
 
         getVerifications().assertTrue(homePage.isLoggedInAs(name), "Verify header shows Logged in as " + name);
 
         AccountDeletedPage accountDeletedPage = homePage.clickDeleteAccount();
-
         getVerifications().assertEquals(accountDeletedPage.getDeletedHeadingText(), "ACCOUNT DELETED!", "Verify account deletion success banner text");
 
         accountDeletedPage.clickContinue();
