@@ -1,0 +1,65 @@
+{
+  "registrationTest": {
+    "name": "Jane Doe",
+    "email": "jane.doe@autoexample.com",
+    "title": "Mrs",
+    "password": "SecurePassword123",
+    "day": "15",
+    "month": "6",
+    "year": "1992",
+    "newsletter": true,
+    "optin": true,
+    "firstName": "Jane",
+    "lastName": "Doe",
+    "company": "Quality Co",
+    "address1": "123 Test Street",
+    "address2": "Apt 4B",
+    "country": "United States",
+    "state": "California",
+    "city": "San Jose",
+    "zip": "95112",
+    "mobile": "1234567890"
+  },
+  "checkoutTest": {
+    "productToSearch": "Blue Top",
+    "quantity": 3,
+    "name": "E2E Buyer",
+    "email": "e2e.buyer@autoexample.com",
+    "title": "Mr",
+    "password": "CheckoutPass123",
+    "day": "1",
+    "month": "1",
+    "year": "1990",
+    "firstName": "John",
+    "lastName": "Buyer",
+    "company": "E-Commerce Corp",
+    "address1": "456 Shopping Ave",
+    "address2": "Suite 10",
+    "country": "Canada",
+    "state": "Ontario",
+    "city": "Toronto",
+    "zip": "M5V 2N2",
+    "mobile": "9876543210",
+    "cardName": "John Buyer",
+    "cardNumber": "4111222233334444",
+    "cvc": "123",
+    "cardMonth": "12",
+    "cardYear": "2028",
+    "comment": "Please deliver package during business hours."
+  },
+  "contactUsTest": {
+    "name": "Support Seeker",
+    "email": "seeker@autoexample.com",
+    "subject": "Inquiry about billing",
+    "message": "Hello, I wanted to inquire about standard shipping times. Thank you!",
+    "uploadFilePath": "src/test/resources/test-data/sample_upload.txt"
+  },
+  "productReviewTest": {
+    "name": "Reviewer Pro",
+    "email": "reviewer.pro@autoexample.com",
+    "reviewText": "Excellent product! Highly recommended, good material."
+  },
+  "subscriptionTest": {
+    "email": "subscriber@autoexample.com"
+  }
+}
