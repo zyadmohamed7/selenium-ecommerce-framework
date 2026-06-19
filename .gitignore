@@ -41,3 +41,8 @@ build/
 ### Comparison files (for learning only) ###
 **/pages/comparison/
 **/tests/VoidComparisonTest.java
+
+### Test Reports and Screenshots ###
+test-output/
+allure-report/
+.allure/
