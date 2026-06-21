@@ -14,11 +14,19 @@ import java.nio.file.StandardCopyOption;
 public class Screenshots {
     private static final String SCREENSHOT_DIR = "test-output/screenshots/";
 
+    private static void ensureDirectoryExists() {
+        File directory = new File(SCREENSHOT_DIR);
+        if (!directory.exists()) {
+            directory.mkdirs();
+        }
+    }
+
     public static void fullPageScreenshot(WebDriver driver, String screenshotName) {
         try {
             byte[] screenshotBytes = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES);
             io.qameta.allure.Allure.addAttachment(screenshotName, new java.io.ByteArrayInputStream(screenshotBytes));
 
+            ensureDirectoryExists();
             File screenshotSrc = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
             File screenshotDis = new File(SCREENSHOT_DIR + screenshotName + "-" + TimeManager.getTimeStamp() + ".png");
             
@@ -37,6 +45,7 @@ public class Screenshots {
             byte[] screenshotBytes = driver.findElement(elementSelector).getScreenshotAs(OutputType.BYTES);
             io.qameta.allure.Allure.addAttachment(screenshotName != null ? screenshotName : accessibleName, new java.io.ByteArrayInputStream(screenshotBytes));
 
+            ensureDirectoryExists();
             File screenshotSrc = driver.findElement(elementSelector).getScreenshotAs(OutputType.FILE);
             File screenshotDis = new File(SCREENSHOT_DIR + accessibleName + "-" + TimeManager.getTimeStamp() + ".png");
             

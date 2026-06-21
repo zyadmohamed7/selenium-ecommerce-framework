@@ -56,7 +56,6 @@ public class E2ETests extends BaseTest {
         String uniqueEmail = "jane.doe." + System.currentTimeMillis() + "@autoexample.com";
         String name = (String) testData.get("name");
 
-        // Use the Preconditions fixture to register and log in the user
         HomePage homePage = new Preconditions(getDriver()).createNewUserPrecondition(name, uniqueEmail, testData);
 
         getVerifications().assertTrue(homePage.isLoggedInAs(name), "Verify header shows Logged in as " + name);
