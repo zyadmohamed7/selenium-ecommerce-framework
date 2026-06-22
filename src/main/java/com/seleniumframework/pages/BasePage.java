@@ -28,6 +28,8 @@ public class BasePage {
         this.browserActions = new BrowserActions(driver);
     }
 
+
+    // a transaction method
     public HomePage clickHome() {
         elementActions.click(homeLink);
         return new HomePage(driver);
