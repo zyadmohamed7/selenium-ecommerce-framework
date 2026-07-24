@@ -74,12 +74,11 @@ public class ElementActions {
     }
 
     public void uploadFile(By locator, String filePath) {
-        String fileName = System.getProperty("user.dir") + File.separator + filePath;
+        String fileName = new File(filePath).getAbsolutePath();
         Logs.info("Uploading file: " + fileName + " to element: " + locator);
         waits.fluentWait().until(driver -> {
             try {
                 WebElement element = driver.findElement(locator);
-                scrollIntoView(element);
                 element.sendKeys(fileName);
                 return true;
             } catch (
